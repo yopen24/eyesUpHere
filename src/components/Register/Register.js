@@ -1,4 +1,3 @@
-import { render } from "@testing-library/react";
 import React from "react";
 
 class Register extends React.Component {
@@ -21,27 +20,26 @@ class Register extends React.Component {
     this.setState({ password: event.target.value });
   };
 
-  onSubmitSignIn= ( )=> {
-    fetch('http://localhost:3000/register', {
-      method: 'post',
-      headers: {'Content-Type': 'appliaction/json'},
+  onSubmitSignIn = () => {
+    fetch("http://localhost:3000/register", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         email: this.state.email,
         password: this.state.password,
-        name: this.state.name
-      })
+        name: this.state.name,
+      }),
     })
-    .then(response => response.json())
-      .then(user => {
+      .then((response) => response.json())
+      .then((user) => {
         if (user) {
-          this.props.loadUser(user)
+          this.props.loadUser(user);
           this.props.onRouteChange('home');
-        }
-      })
-  }
+        } 
+      });
+  };
 
   render() {
-    
     return (
       <article className="br3 ba dark-gray b--black-10 mv4 w-100 w-50 w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
