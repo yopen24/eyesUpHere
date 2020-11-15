@@ -23,6 +23,7 @@ const particlesOptions = {
 class App extends Component {
   constructor() {
     super();
+   
     this.state = {
       input: "",
       imageUrl: "",
@@ -131,7 +132,7 @@ class App extends Component {
         ) : route === "signin" ? (
           <Signin loadUser={this.loadUser} onRouteChange={this.onRouteChange} />
         ) : (
-          <Register onRouteChange={this.onRouteChange} />
+          <Register loadUser={this.loadUser}  onRouteChange={this.onRouteChange} />
         )}
       </div>
     );
