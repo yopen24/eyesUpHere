@@ -77,7 +77,9 @@ class App extends Component {
 
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
-    fetch("https://eyes-up-here-api.herokuapp.com/imageurl", {
+    if(this.state.input === ''){
+      alert('Insert a link for an jpg image please');
+    }else{ fetch("https://eyes-up-here-api.herokuapp.com/imageurl", {
       method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -101,7 +103,8 @@ class App extends Component {
         }
         this.displayFaceBox(this.calculateFaceLocation(response));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err));}
+   
   };
 
   onRouteChange = (route) => {
